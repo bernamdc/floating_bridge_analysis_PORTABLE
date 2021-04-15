@@ -297,7 +297,7 @@ f_array_type_cases = ['equal_energy_bins']  # 'equal_width_bins', 'equal_energy_
 # n_modes_cases = [(g_node_num+len(p_node_coor))*6]
 n_modes_cases = [100]
 n_nodes_cases = [len(g_node_coor)]
-beta_DB_cases = np.arange(rad(0), rad(359), rad(5))  # wind (from) directions. Interval: [rad(0), rad(360)]
+beta_DB_cases = np.arange(rad(0), rad(359), rad(1000))  # wind (from) directions. Interval: [rad(0), rad(360)]
 list_of_cases = list_of_cases_FD_func(n_aero_coef_cases, include_SE_cases, aero_coef_method_cases, beta_DB_cases,
                                    flutter_derivatives_type_cases, n_freq_cases, n_modes_cases, n_nodes_cases,
                                    f_min_cases, f_max_cases, include_sw_cases, include_KG_cases, skew_approach_cases, f_array_type_cases, make_M_C_freq_dep_cases, dtype_in_response_spectra_cases)
@@ -306,7 +306,7 @@ list_of_cases = list_of_cases_FD_func(n_aero_coef_cases, include_SE_cases, aero_
 # pr = cProfile.Profile()
 # pr.enable()
 # Writing results
-# parametric_buffeting_FD_func(list_of_cases, g_node_coor, p_node_coor, Ii_simplified, R_loc, D_loc, cospec_type, include_modal_coupling, include_SE_in_modal)
+parametric_buffeting_FD_func(list_of_cases, g_node_coor, p_node_coor, Ii_simplified, R_loc, D_loc, cospec_type, include_modal_coupling, include_SE_in_modal)
 # # pr.disable()
 # # pr.print_stats(sort='cumtime')
 
@@ -351,9 +351,9 @@ aero_coef_linearity_cases = ['NL']  # 'L': Taylor formula. 'NL': aero_coeff from
 SE_linearity_cases = ['L']  # 'L': Constant Fb in Newmark, SE (if included!) taken as linear Kse and Cse (KG is not updated) 'NL': Fb is updated each time step, no Kse nor Cse (KG is updated each dt).
 geometric_linearity_cases = ['L']  # 'L': Constant M,K in Newmark. 'NL': M,K are updated each time step from deformed node coordinates.
 n_nodes_cases = [len(g_node_coor)]
-n_seeds_cases = [10]
-dt_cases = [0.25]  # Not all values possible! wind_overlap_size must be even!
-beta_DB_cases = np.arange(rad(0), rad(359), rad(5))  # wind (from) directions. Interval: [rad(0), rad(360)]
+n_seeds_cases = [2]
+dt_cases = [4]  # Not all values possible! wind_overlap_size must be even!
+beta_DB_cases = np.arange(rad(0), rad(359), rad(1000))  # wind (from) directions. Interval: [rad(0), rad(360)]
 list_of_cases = list_of_cases_TD_func(aero_coef_method_cases, n_aero_coef_cases, include_SE_cases, flutter_derivatives_type_cases, n_nodes_cases, include_sw_cases, include_KG_cases, n_seeds_cases,
                                       dt_cases, aero_coef_linearity_cases, SE_linearity_cases, geometric_linearity_cases, skew_approach_cases, beta_DB_cases)
 

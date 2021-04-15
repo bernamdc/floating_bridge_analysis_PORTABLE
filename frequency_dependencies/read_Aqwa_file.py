@@ -13,13 +13,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from transformations import R_z
+import os
+import sys
 
 ########################################################################################################################
 # RAW DATA
 ########################################################################################################################
 
 # READING AQWA FILE
-f = open(r'C:\Users\bercos\PycharmProjects\floating_bridge_analysis\frequency_dependencies\Aqwa_Analysis_(AMC).LIS', 'r')
+try:  # works only when "Run"
+    project_path = os.path.dirname(os.path.abspath(__file__))
+except:  # works when running directly in console
+    project_path = sys.path[-2]  # Path of the project directory. To be used in the Python Console! When a console is opened in Pycharm, the current project path should be automatically added to sys.path.
+f = open(project_path + r'\Aqwa_Analysis_(AMC).LIS', 'r')
 f = f.readlines()
 
 # AXES REFERENCE CONVENTION. IF PHI=0 -> 'pontoon' local coord. sys. IF PHI = 90 -> 'bridge' local coord. sys (confirm this if new Aqwa file is used):
