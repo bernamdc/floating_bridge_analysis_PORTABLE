@@ -321,7 +321,7 @@ wind_overlap_T = 8  # (s). Total overlapping duration between adjacent blocks.
 transient_T = 1 * wind_block_T  # (s). Transient time due to initial conditions, to be later discarded in the response analysis.
 ramp_T = 0  # (s). Ramp up time, inside the transient_T, where windspeeds are linearly increased.
 # wind_T = 3 * 6 * wind_block_T + transient_T  # (s). Total time-domain simulation duration, including transient time, after overlapping. Keep it in this format (multiple of each wind block time).
-wind_T = 2 * wind_block_T + transient_T  # (s). Total time-domain simulation duration, including transient time, after overlapping. Keep it in this format (multiple of each wind block time).
+wind_T = 4 * wind_block_T + transient_T  # (s). Total time-domain simulation duration, including transient time, after overlapping. Keep it in this format (multiple of each wind block time).
 
 # # ONE CASE
 # include_sw = True
